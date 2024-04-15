@@ -1,0 +1,17 @@
+//  Метод решение с метафункций (в отличий от обычного метода, этот быстрее на 16 микросекунды)
+template<int A, int B>
+struct GCD {
+    static const int value = GCD<B, A % B>::value;
+};
+
+template<int A>
+struct GCD<A, 0> {
+    static const int value = A;
+};
+
+
+// Классический метод решение
+
+int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
